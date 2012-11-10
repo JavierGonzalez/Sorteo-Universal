@@ -34,7 +34,7 @@
 
 <p style="text-align:justify;">Prueba de concepto de selección por sorteo. A partir de una lista de candidatos (Censo) se crea otra lista (Seleccionados) ordenada aleatoriamente. Para ello se recurre a <a href="http://es.wikipedia.org/wiki/Mersenne_twister" target="_blank">Mersenne Twister (MT19937)</a>, uno de los mejores algoritmos generadores de números aleatorios. Se ha usado <a href="https://gist.github.com/300494" target="_blank">esta versión</a> en javascript. Mersenne Twister es de código abierto, portable y está traducido a múltiples lenguajes por lo que se puede reproducir facilmente en cualquier sistema para verificar el resultado, sin necesidad de Internet.</p>
 
-<p style="text-align:justify;">El algoritmo genera secuencias de ciclo largo, totalmente repetibles y verificables, a partir de una semilla. Cada semilla generará una secuencia única. Para un sorteo verificable y transparente, se sugiere usar múltiples números de diferentes loterías como semillas aleatorias. A modo de ejemplo se establece como semilla los números premiados del <a href="http://es.wikipedia.org/wiki/Sorteo_Extraordinario_de_Navidad#.C3.9Altimos_Premios_Gordos_y_ciudades_agraciadas" target="_blank">Sorteo Extraordinario de Navidad</a> (<em>El Gordo</em>, España) de los años 1986, 2010 y 2011, concatenados en este orden.</p>
+<p style="text-align:justify;">El algoritmo genera secuencias de ciclo largo, totalmente repetibles y verificables, a partir de una semilla. Cada semilla generará una secuencia única. Para un sorteo verificable y transparente, se sugiere introducir la lista ordenada alfabéticamente y usar múltiples números de diferentes loterías como semillas aleatorias. A modo de ejemplo se establece como semilla los números premiados del <a href="http://es.wikipedia.org/wiki/Sorteo_Extraordinario_de_Navidad#.C3.9Altimos_Premios_Gordos_y_ciudades_agraciadas" target="_blank">Sorteo Extraordinario de Navidad</a> (<em>El Gordo</em>, España) de los años 1986, 2010 y 2011, concatenados en este orden.</p>
 
 </td></tr><tr><td valign="top">
 
@@ -319,16 +319,16 @@ function sortear() {
 	var electos_num = $("#electos_num").val();
 	var semilla = $("#semilla").val().replace(/\s/gi, "");
 	var mt = new MersenneTwister(semilla);
-	
-	// Muestra el numero de elementos en el censo (uno por linea)
 	var censo = $("#censo").val().split("\n");
-	$("#censo_num").html(censo.length);
 
 	// Recorre el array de elementos del censo relacionandolos con un numero aleatorio de MT
+	var censo_num = 0;
 	ra = new Array();
 	for (var n in censo) {
-		if (censo[n]!="") { ra[censo[n]] = mt.random(); }
+		if (censo[n]!="") { ra[censo[n]] = mt.random(); censo_num++; }
 	}
+	
+	$("#censo_num").html(censo_num);
 
 	// Ordena el array de forma asociativa y por value (el numero aleatorio MT), de menor a mayor, siendo este el orden del resultado final
 	var n = 0;
