@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="author" content="Javier González González - desarrollo@virtualpol.com" />
 
-<title>Designación por sorteo con verificabilidad Universal</title>
+<title>Sorteo Universal</title>
 
 
 <!-- Libreria jquery estandar -->
@@ -12,7 +12,7 @@
 
 
 <!-- Libreria Mersenne Twister. Fuente original: https://gist.github.com/300494 -->
-<script src="mersene-twister.js"></script>
+<script src="mersenne-twister.js"></script>
 
 
 </head>
@@ -25,12 +25,16 @@
 
 <table width="1000"><tr><td colspan="3">
 
-<h1>Designación por sorteo con verificabilidad Universal</h1>
+<span style="float:right;font-size:20px;"><a href="https://github.com/JavierGonzalez/Sorteo-Universal" target="_blank"><b>GitHub</b></a></span>
+
+
+<h1>Sorteo Universal</h1>
+
+<h2>Designación por sorteo con verificabilidad universal</h2>
 
 <p style="text-align:justify;">Prueba de concepto de selección por sorteo. A partir de una lista de candidatos (Censo) se crea otra lista (Seleccionados) ordenada aleatoriamente. Para ello se recurre a <a href="http://es.wikipedia.org/wiki/Mersenne_twister" target="_blank">Mersenne Twister (MT19937)</a>, uno de los mejores algoritmos generadores de números aleatorios. Se ha usado <a href="https://gist.github.com/300494" target="_blank">esta versión</a> en javascript. Mersenne Twister es de código abierto, portable y está traducido a múltiples lenguajes por lo que se puede reproducir facilmente en cualquier sistema para verificar el resultado, sin necesidad de Internet.</p>
 
-<p style="text-align:justify;">El algoritmo genera secuencias de ciclo largo, totalmente repetibles y verificables, a partir de una semilla. Cada semilla generará una secuencia única. Para un sorteo verificable y transparente, se sugiere usar múltiples números de diferentes loterías como semillas aleatorias. A modo de ejemplo se establece como semilla los números premiados del <a href="http://es.wikipedia.org/wiki/Sorteo_Extraordinario_de_Navidad#.C3.9Altimos_Premios_Gordos_y_ciudades_agraciadas" target="_blank">Sorteo Extraordinario de Navidad</a> (<em>El Gordo</em>, España) de los años 1986, 2010 y 2011.</p>
-
+<p style="text-align:justify;">El algoritmo genera secuencias de ciclo largo, totalmente repetibles y verificables, a partir de una semilla. Cada semilla generará una secuencia única. Para un sorteo verificable y transparente, se sugiere usar múltiples números de diferentes loterías como semillas aleatorias. A modo de ejemplo se establece como semilla los números premiados del <a href="http://es.wikipedia.org/wiki/Sorteo_Extraordinario_de_Navidad#.C3.9Altimos_Premios_Gordos_y_ciudades_agraciadas" target="_blank">Sorteo Extraordinario de Navidad</a> (<em>El Gordo</em>, España) de los años 1986, 2010 y 2011, concatenados en este orden.</p>
 
 </td></tr><tr><td valign="top">
 
@@ -286,7 +290,7 @@ Zorro</textarea>
 <h2>Parámetros</h2>
 
 <p>Semilla (solo números):<br />
-<input type="text" value="03772 79250 58268" id="semilla" style="font-size:22px;" /></p>
+<input type="text" value="037727925058268" id="semilla" style="font-size:22px;" maxlength="20" /></p>
 
 <p><button id="sortear" style="font-size:22px;">Sortear</button></p>
 
