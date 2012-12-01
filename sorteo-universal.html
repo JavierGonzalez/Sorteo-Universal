@@ -8,8 +8,8 @@
 <title>Sorteo Universal</title>
 
 
-<!-- Libreria jquery estandar -->
-<script src="jquery.min.js"></script>
+<!-- Libreria jQuery estandar -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 
 <!-- Libreria Mersenne Twister. Fuente original: https://gist.github.com/300494 -->
@@ -323,22 +323,23 @@ function sortear() {
 	// Define variables utiles
 	var r = "";
 	var electos_num = $("#electos_num").val();
+	var bloque_num = 0;
 	var semilla = $("#semilla").val().replace(/\s/gi, "");
 	var mt = new MersenneTwister(semilla);
 	var censo = $("#censo").val().split("\n");
 	var bloque = $("#bloque").val();
-	
-	if (bloque==0) {bloque=1}
 
 	// Recorre el array de elementos del censo relacionandolos con un numero aleatorio de MT
 	ra = new Array();
+	if (bloque==0) { bloque = 1; }
+
 	do {
 		var censo_num = 0;
 		for (var n in censo) {
 			if (censo[n]!="") { ra[censo[n]] = mt.random(); censo_num++; }
 		}
 		bloque_num++;
-	} while (bloque_num != bloque)
+	} while (bloque_num!=bloque)
 	
 	$("#censo_num").html(censo_num);
 
@@ -348,12 +349,12 @@ function sortear() {
 		if (n<electos_num) { r += key + "\n"; n++; }
 	});
 	
-	// Imprime resultado final
+	// Actualiza el resultado
 	$("#electos").text(r);
 }
 
 // Funcion para ordenar un array de forma asociativa (muy retorcido con Javascript)
-// Fuente: http://stackoverflow.com/a/5200010/1442693
+// Fuente de esta función: http://stackoverflow.com/a/5200010/1442693
 function bySortedValue(obj, callback, context) {
     var tuples = [];
     for (var key in obj) tuples.push([key, obj[key]]);
@@ -361,6 +362,7 @@ function bySortedValue(obj, callback, context) {
     var length = tuples.length;
     while (length--) callback.call(context, tuples[length][0], tuples[length][1]);
 }
+////////
 </script>
 
 
