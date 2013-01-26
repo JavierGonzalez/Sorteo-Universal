@@ -346,7 +346,7 @@ function sortear() {
 	// Ordena el array de forma asociativa y por value (el numero aleatorio MT), de menor a mayor, siendo este el orden del resultado final
 	var n = 0;
 	bySortedValue(ra, function(key, value) {
-		if (n<electos_num) { r += key + "\n"; n++; }
+		if (n<electos_num) { r += value + " " + key + "\n"; n++; }
 	});
 	
 	// Actualiza el resultado
